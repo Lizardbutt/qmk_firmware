@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                     ,------------------------------------------.
  * |      |      |      | [    | ]    | *    |                     |      |      | PP   | PT    | NT   | Mute |
  * |------+------+------+------+------+------|                     |------+------+------+-------+------+------|
- * |      | '    | "    | (    | )    | -    |                     |      |      | Up   |       | PGUP | VU   |
+ * | `    | '    | "    | (    | )    | -    |                     |      |      | Up   |       | PGUP | VU   |
  * |------+------+------+------+------+------|                     |------+------+------+-------+------+------|
  * | |    | ~    | $    | {    | }    | +    |--------.    ,-------|      | Left | Down | Right | PGDN | VD   |
  * |------+------+------+------+------+------|        |    |       |------+------+------+-------+------+------|
@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *            '-----------------------------------'            '------''----------------------------'         */
 [_CHARACTERS] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, KC_LBRC, KC_RBRC, KC_ASTR,                      XXXXXXX, XXXXXXX, KC_MPLY, KC_MPRV,  KC_MNXT, KC_MUTE,
-  XXXXXXX, KC_QUOT, KC_DQT,  KC_LPRN, KC_RPRN, KC_MINS,                      XXXXXXX, XXXXXXX, KC_UP,   XXXXXXX,  KC_PGUP, KC_VOLU,
+  KC_GRV,  KC_QUOT, KC_DQT,  KC_LPRN, KC_RPRN, KC_MINS,                      XXXXXXX, XXXXXXX, KC_UP,   XXXXXXX,  KC_PGUP, KC_VOLU,
   KC_PIPE, KC_TILD, KC_DLR,  KC_LCBR, KC_RCBR, KC_PLUS,                      XXXXXXX, KC_LEFT, KC_DOWN, KC_RIGHT, KC_PGDN, KC_VOLD,
   XXXXXXX, KC_COLN, KC_AT,   KC_LABK, KC_RABK, KC_EQUAL, XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, KC_WSCH,
                     XXXXXXX, XXXXXXX, XXXXXXX, KC_TRNS,  KC_TRNS,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, C(A(KC_DEL))
