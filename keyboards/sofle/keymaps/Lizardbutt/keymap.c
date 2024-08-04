@@ -95,19 +95,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */  
 
 // Code stuff
-// Layer states. Do custom fun shit here
-#ifdef OLED_ENABLE
 
 // How long each frame lasts in milliseconds
 #define FRAME_DURATION 333 
-
 // Animation timer/frames
 uint32_t timer = 0;
 uint8_t current_frame = 0;
-
 // Screen saver must always be inactive
 bool oled_screensaver_active = false;
 
+// This works, if I want more frames I need to add more, then add them to the array for display
 // This orients the non-master hand to display right-side-up
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     if (is_keyboard_master()) {
@@ -159,6 +156,7 @@ static void render_animation(void) {
     }
 }
 
+// This works now, just need a better animation.
 bool oled_task_user(void) {
     if(last_input_activity_elapsed() < OLED_SCREENSAVER_TIMEOUT) {
         oled_on();
@@ -198,11 +196,8 @@ bool oled_task_user(void) {
     }
     return false;
 }
-#endif
-
 
 // This is squared away and working correctly.
-#ifdef ENCODER_ENABLE
 bool encoder_update_kb(uint8_t index, bool clockwise) {
     if (!encoder_update_user(index, clockwise)) {
         return false;
@@ -224,4 +219,3 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
     }
     return true;
 }
-#endif
