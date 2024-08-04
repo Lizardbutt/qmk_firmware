@@ -160,18 +160,16 @@ static void render_animation(void) {
 }
 
 bool oled_task_user(void) {
-    // If OLED is off, make sure screensaver is disabled, and do nothing else.
-    if (!is_oled_on()) {
+    if(last_input_activity_elapsed() < OLED_SCREENSAVER_TIMEOUT) {
+        oled_on();
         oled_screensaver_active = false;
-        return true;
     }
-    // If OLED is on and it has been longer than OLED_SCREENSAVER_TIMEOUT since last matrix or encoder change, activate screensaver.
-    if (is_oled_on()  &&  last_input_activity_elapsed() > OLED_SCREENSAVER_TIMEOUT) {
-        // Turn that shit on if I'm not here.
+    if(is_oled_on() && last_input_activity_elapsed() > OLED_SCREENSAVER_TIMEOUT) {
         oled_screensaver_active = true;
-    } else {
-        // This was not originally added to this function,
-        // I added it because it's required for the OLED to actually fucking revert.
+    }
+    if(is_oled_on() && last_input_activity_elapsed() > OLED_TIMEOUT) {
+        oled_clear();
+        oled_off();
         oled_screensaver_active = false;
     }
     // If idle, render the animation.
