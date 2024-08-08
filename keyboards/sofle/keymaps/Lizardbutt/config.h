@@ -9,9 +9,6 @@
 #define OLED_TIMEOUT              10 * MINUTE_TO_MS  // 10 minutes of no activity to turn OLED off
 #define OLED_BRIGHTNESS           120
 
-// // Flips Encoder CW > CCW ; CCW > CW
-// #define ENCODER_DIRECTION_FLIP
-
 // Left Side Encoder
 #define ENCODERS_PAD_A      { F5 }
 #define ENCODERS_PAD_B      { F4 }
