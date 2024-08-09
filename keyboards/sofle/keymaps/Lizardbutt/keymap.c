@@ -161,7 +161,7 @@ bool oled_task_user(void) {
                 oled_write_P("----\nNum\nLayer\n----\n", false);
                 break;
             case _ALTNUM :
-                oled_write_P("----\nAltNm\nLayer\n----\n", false);
+                oled_write_P("----\nAltNmLayer\n----\n", false);
                 break;
             case _CHARACTERS :
                 oled_write_P("----\nChar\nLayer\n----\n", false);
@@ -171,6 +171,7 @@ bool oled_task_user(void) {
     }
     // If the oled is on, but has been idle for longer than the screensaver time, turn the OLED off
     if(is_oled_on() && last_input_activity_elapsed() > OLED_TIMEOUT) {
+        oled_clear();
         oled_off();
         oled_screensaver_active = false;
     // If the OLED is on, but has been idle for a while, turn the screensaver on

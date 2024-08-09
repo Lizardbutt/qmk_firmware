@@ -4,9 +4,9 @@
 #define SPLIT_WPM_ENABLE
 
 // OLED Screens
-#define MINUTE_TO_MS              6000  // 6 seconds * 1000 milliseconds
-#define OLED_SCREENSAVER_TIMEOUT  1 * MINUTE_TO_MS  // 1 minute of no activity to turn on OLED screensaver
-#define OLED_TIMEOUT              10 * MINUTE_TO_MS  // 10 minutes of no activity to turn OLED off
+#define MINUTE_TO_MS              10000  // 10 seconds
+#define OLED_SCREENSAVER_TIMEOUT  1 * MINUTE_TO_MS  // 10 Seconds of no activity, turn on the screensaver
+#define OLED_TIMEOUT              10 * MINUTE_TO_MS  // 100 Seconds of no activity, turn off the OLED
 #define OLED_BRIGHTNESS           120
 
 // Left Side Encoder
