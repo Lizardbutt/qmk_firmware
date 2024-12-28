@@ -24,6 +24,7 @@ enum sofle_layers {
     _NUMPAD,
     _ALTNUM,
     _CHARACTERS
+    _STATICLAYERS
 };
 // Layer Definitions
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -38,15 +39,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+-----+------+------+------+-----| Mute   |    | P/P   |------+------+------+------+------+------|
  * | LCTRL  | Z   | X    | C    | V    | B   |--------|    |-------| N    | M    | = +  | , <  | . >  | / ?  |
  * `-----------------------------------------/       /      \      \-----------------------------------------'
- *         | LGUI | LAlt | MO 1 | Backspc | / Enter /        \ MO 3 \  | Space | MO 2 |      |      |
+ *         | LGUI | LAlt | MO 1 | Backspc | / Enter /        \ MO 3 \  | Space | MO 2 |      | MO 3 |
  *         |      |      |      |         |/       /          \      \ |       |      |      |      |
  *         '------------------------------''------'            '------''----------------------------'       */
 [_BASE] = LAYOUT(
-  KC_ESC,  KC_1, KC_2,    KC_3,    KC_4,        KC_5,                                      KC_6,     KC_7,        KC_8,     KC_9,     KC_0,    KC_MINS,
-  KC_TAB,  KC_Q, KC_W,    KC_E,    KC_R,        KC_T,                                      KC_Y,     KC_U,        KC_I,     KC_O,     KC_P,    KC_BSLS,
-  KC_LSFT, KC_A, KC_S,    KC_D,    KC_F,        KC_G,                                      KC_H,     KC_J,        KC_K,     KC_L,     KC_SCLN, KC_QUOT,
-  KC_LCTL, KC_Z, KC_X,    KC_C,    KC_V,        KC_B,         KC_MUTE,    KC_MPLY,         KC_N,     KC_M,        KC_EQUAL, KC_COMMA, KC_DOT,  KC_SLSH,
-                 KC_LGUI, KC_LALT, MO(_NUMPAD), KC_BACKSPACE, KC_ENT,     MO(_CHARACTERS), KC_SPACE, MO(_ALTNUM), XXXXXXX,  XXXXXXX
+  KC_ESC,  KC_1, KC_2,    KC_3,    KC_4,        KC_5,                                      KC_6,     KC_7,        KC_8,     KC_9,             KC_0,    KC_MINS,
+  KC_TAB,  KC_Q, KC_W,    KC_E,    KC_R,        KC_T,                                      KC_Y,     KC_U,        KC_I,     KC_O,             KC_P,    KC_BSLS,
+  KC_LSFT, KC_A, KC_S,    KC_D,    KC_F,        KC_G,                                      KC_H,     KC_J,        KC_K,     KC_L,             KC_SCLN, KC_QUOT,
+  KC_LCTL, KC_Z, KC_X,    KC_C,    KC_V,        KC_B,         KC_MUTE,    KC_MPLY,         KC_N,     KC_M,        KC_EQUAL, KC_COMMA,         KC_DOT,  KC_SLSH,
+                 KC_LGUI, KC_LALT, MO(_NUMPAD), KC_BACKSPACE, KC_ENT,     MO(_CHARACTERS), KC_SPACE, MO(_ALTNUM), XXXXXXX,  MO(_STATICLAYERS)
 ),
 /* NUMPAD
  * ,------------------------------------------.                    ,---------------------------------------------.
@@ -107,6 +108,46 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    KC_TRNS, KC_TILD, KC_DLR,  KC_LCBR, KC_RCBR, KC_PLUS,                     KC_DEL,  KC_LEFT, KC_DOWN, KC_RIGHT, KC_PGDN, KC_PIPE,
    KC_TRNS, KC_COLN, KC_AT,   KC_LABK, KC_RABK, KC_EQUAL, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,
                      KC_TRNS, KC_TRNS, XXXXXXX, KC_TRNS,  KC_TRNS,  XXXXXXX, XXXXXXX, XXXXXXX, UG_VALU, UG_VALD
+)
+/* STATICLAYERS
+ * ,------------------------------------------.                     ,-----------------------------------------.
+ * | TT(0) |      |      |      |      |      |                     |      |      |      |      |      |      |
+ * |-------+------+------+------+------+------|                     |------+------+------+------+------+------|
+ * |       |      |      |      |      |      |                     |      |      |      |      |      |      |
+ * |-------+------+------+------+------+------|                     |------+------+------+------+------+------|
+ * |       |      |      |      |      |      |--------.    ,-------|      |      |      |      |      |      |
+ * |-------+------+------+------+------+------|        |    |       |------+------+------+------+------+------|
+ * |       |      |      |      |      |      |--------|    |-------|      |      |      |      |      |      |
+ * `------------------------------------------/       /      \      \-----------------------------------------'
+ *             |      |      |      |      | /       /        \      \  |      |      |      |      |
+ *             |      |      |      |      |/       /          \      \ |      |      |      |      |
+ *             '---------------------------''------'            '------''---------------------------'        */
+[_STATICLAYERS] = LAYOUT(
+  TT(_GAMES), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+)
+/* GAMES
+ * ,-----------------------------------------.                     ,-----------------------------------------.
+ * | ESC    | 1   | 2    | 3    | 4    | 5   |                     | 6    | 7    | 8    | 9    | 0    | - _  |
+ * |--------+-----+------+------+------+-----|                     |------+------+------+------+------+------|
+ * | Tab    | Q   | W    | E    | R    | T   |                     | Y    | U    | I    | O    | P    | \ |  |
+ * |--------+-----+------+------+------+-----|                     |------+------+------+------+------+------|
+ * | LShift | A   | S    | D    | F    | G   |--------.    ,-------| H    | J    | K    | L    | ; :  | ' "  |
+ * |--------+-----+------+------+------+-----| Mute   |    | P/P   |------+------+------+------+------+------|
+ * | LCTRL  | Z   | X    | C    | V    | B   |--------|    |-------| N    | M    | = +  | , <  | . >  | / ?  |
+ * `-----------------------------------------/       /      \      \-----------------------------------------'
+ *         |      | LAlt |      | SPC     | / Enter /        \ BKSP \  |       |      |      |      |
+ *         |      |      |      |         |/       /          \      \ |       |      |      |      |
+ *         '------------------------------''------'            '------''----------------------------'       */
+[_GAMES] = LAYOUT(
+  KC_ESC,  KC_1, KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,     KC_7,        KC_8,     KC_9,     KC_0,    KC_MINS,
+  KC_TAB,  KC_Q, KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,     KC_U,        KC_I,     KC_O,     KC_P,    KC_BSLS,
+  KC_LSFT, KC_A, KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,     KC_J,        KC_K,     KC_L,     KC_SCLN, KC_QUOT,
+  KC_LCTL, KC_Z, KC_X,    KC_C,    KC_V,    KC_B,     KC_MUTE,    KC_MPLY,      KC_N,     KC_M,        KC_EQUAL, KC_COMMA, KC_DOT,  KC_SLSH,
+                 XXXXXXX, KC_LALT, XXXXXXX, KC_SPACE, KC_ENT,     KC_BACKSPACE, XXXXXXX,  XXXXXXX,     XXXXXXX,  XXXXXXX
 )
 };
 /* Template layout
