@@ -222,6 +222,16 @@ bool oled_task_user(void) {
                 rgblight_mode(5);
                 rgblight_sethsv(100, 200, 255);
                 break;
+            case _STATICLAYERS:
+                oled_write_P("----\nStat\nLayer\n----\n", false);
+                rgblight_mode(5);
+                rgblight_sethsv(0, 95, 89);
+                break;
+            case _GAMES:
+                oled_write_P("----\nGame\nLayer\n----\n", false);
+                rgblight_mode(5);
+                rgblight_sethsv(130, 100, 100);
+                break;
         }
         // Call render function to render Triforce
         render_triforce_animation();
